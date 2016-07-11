@@ -17,6 +17,7 @@ function parse(tehai) {
 	var AVA_LEN = 13
 	var pos = 0
 	var suuji_now = 0
+	var hai_cnt = 0
 
 	var PARSE_ERROR = "TeHai's format is error."
 
@@ -39,6 +40,7 @@ function parse(tehai) {
 		} else {
 			store[_shurui][_suuji] ++
 		}
+		hai_cnt ++
 	}
 
 	function shurui(tehai) {
@@ -69,7 +71,7 @@ function parse(tehai) {
 	try {
 		tehai = tehai.replace(' ', '')
 		hai(tehai)
-		if (isAvailable(pos)) {
+		if (!isAvailable(hai_cnt)) {
 			throw new Error(PARSE_ERROR)
 		}
 	} catch (e) {
